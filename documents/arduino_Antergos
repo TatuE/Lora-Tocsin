@@ -1,0 +1,19 @@
+
+#quick install for Arduino IDE using ESP-32S on Antergos (Arch linux).
+
+# First install the necessary packages
+
+sudo pacman -S arduino arduino-avr-core python python-pip jre8-openjdk
+sudo gpasswd -a $USER uucp
+sudo pip install esptool
+
+# you need to logout and back in again at this point.
+# start arduino with the command
+
+arduino
+
+# add this string to 'preferences'-> 'Additional Board Manager URLs' =
+# https://dl.espressif.com/dl/package_esp32_index.json
+# From 'Tools', select 'Board' -> 'Board manager' and in the search field add 'esp32'.
+# install the 'ESP32 by Espressif Systems' package that comes up in the search
+# After this you are set up.
