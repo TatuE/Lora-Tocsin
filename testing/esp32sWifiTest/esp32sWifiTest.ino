@@ -1,13 +1,15 @@
+// This is a basic wifi login test for the ESP-32S. It attemps to log in and prints the acquired ip address
+
 #include <WiFi.h>
 
-const char* ssid = "<SSID>";
-const char* psswd = "<PASSWORD>";
+const char* ssid = "<SSID>"; // Insert the wireless network SSID
+const char* psswd = "<PASSWORD>"; // Insert the wireless network password
 
 void setup() {
   Serial.begin(115200);
 
   WiFi.begin(ssid, psswd);
-  
+
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.println("Connecting to WiFi..");

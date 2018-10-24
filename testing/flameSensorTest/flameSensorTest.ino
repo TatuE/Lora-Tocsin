@@ -1,8 +1,10 @@
-
+//This is a flame sensor module for arduino UNO. \
+  arduino prints the sensor value continuously through the serial port.
+//If flame is detected, the led light's up.
 //insert ledpin negative and flame sensor gnd to gnd \
-  insert 3.3v arduino pin to flame sensor +  
+  insert 3.3v arduino pin to flame sensor +
 const int systemLed = 13;
-const int ledPin = 12; // insert ledpin positive to pin 12 
+const int ledPin = 12; // insert ledpin positive to pin 12
 const int digitalPin = 8; // insert led sensor 'do' to pin 8
 
 void setup() {
@@ -10,11 +12,11 @@ void setup() {
   pinMode (digitalPin, INPUT);
   pinMode (ledPin, OUTPUT);
   pinMode (systemLed, OUTPUT);
-  digitalWrite (systemLed, LOW); 
+  digitalWrite (systemLed, LOW);
 }
 
 void loop() {
-  int flameSensor = LOW; 
+  int flameSensor = LOW;
   flameSensor = digitalRead(digitalPin);
   Serial.println(flameSensor);
   delay(500);

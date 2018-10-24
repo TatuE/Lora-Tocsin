@@ -1,16 +1,22 @@
+//This module detects flame sensor data and sends it to a host using a get request \
+
+//From the flame sensor, insert the GND pin to ESP-32S GND pin(Any of them will do), \
+  insert the flame sensor '+' pin to the 3.3V pin on the ESP-32S, \
+  insert the flame sensot 'DO' pin to the pin 22 in the ESP-32S.
+
 #include <WiFi.h>
 
-const char* ssid = "<SSID>";
-const char* psswd = "<PASSWORD>";
-const char* server = "<SERVER/HOST>";
-const int serverPort = <SERVER/HOST PORT>;
+const char* ssid = "<SSID>"; // Insert the wireless network SSID
+const char* psswd = "<PASSWORD>"; // Insert the wireless network password
+const char* server = "<SERVER/HOST>"; // Inser the server ip address or fully qualified domain name (FQDN)
+const int serverPort = <SERVER/HOST PORT>; // Insert the server port to be used
 const int SensorDigital = 22;
 
 void setup() {
   Serial.begin(115200);
   pinMode(SensorDigital, INPUT);
   WiFi.begin(ssid, psswd);
-  
+
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.println("Connecting to WiFi..");
@@ -24,10 +30,10 @@ void setup() {
   Serial.println(WiFi.localIP());
 }
 
-void loop() {  
+void loop() {
   int sensorValue = LOW;
 
-  sensorValue = digitalRead(SensorDigital);  
+  sensorValue = digitalRead(SensorDigital);
   if(sensorValue==HIGH){
     WiFiClient client;
     if(!client.connect(server, serverPort)){
