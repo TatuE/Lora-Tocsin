@@ -30,7 +30,7 @@ void setup() {
 void loop() {
   //The loop is intended to be performed in 10 second intervals. \
     Three flame sensor readings are taken. The result that is send out, is based on a 2/3 (66%) majority from the results. \
-    After this, the ESP-32S goes in to deep sleep mode for a predetermined time.\
+    After this, the ESP-32S goes in to deep sleep mode for a predetermined time.
   int sensorValue = LOW;
   sensorValue = digitalRead(SensorDigital);
 

@@ -1,5 +1,3 @@
-//this tests the deep sleep mode in the ESP-32S, \
-  It lights a led and them goes to sleep mode for 10 seconds. 		
 const int ledPin=23; // led + pin to pin 23, led - pin to gnd
 
 const int sleepTime=10; // time to sleep in seconds

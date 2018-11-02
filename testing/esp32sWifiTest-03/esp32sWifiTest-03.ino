@@ -1,6 +1,5 @@
-// This is a wifi login test for the ESP-32S. Updated with a login method. \
-  It attemps to log in and prints the acquired ip address
-
+// This is a wifi connection failure test for the ESP-32S \
+   If the connection is lost, reconnect is attempted.	
 #include <WiFi.h>
 
 const char* ssid = "<SSID>"; // Insert the wireless network SSID
@@ -12,11 +11,11 @@ void setup() {
 }
 
 void loop() {
-  Serial.println(WiFi.localIP());
-  delay(1000);
+  
 
   if(WiFi.status() != WL_CONNECTED){
     Serial.println("Lost WiFi connection!");
+    Serial.println("");
     wifiConnect();
   }
 
@@ -25,9 +24,10 @@ void loop() {
 void wifiConnect(){
   WiFi.begin(ssid, psswd);
 
+  Serial.println("Connecting to WiFi..");
+
   while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.println("Connecting to WiFi..");
+    delay(500);   
   }
 
   Serial.println("Connected to the WiFi network");
@@ -36,4 +36,5 @@ void wifiConnect(){
   delay(500);
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
+  Serial.println("");
 }
