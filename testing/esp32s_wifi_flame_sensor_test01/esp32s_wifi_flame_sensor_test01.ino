@@ -19,7 +19,7 @@ void setup() {
 }
 
 void loop() {
-  String host = "http://192.168.1.16:80/";
+  String host = "http://192.168.1.16/";
   int sensorValue = LOW;
 
   sensorValue = digitalRead(SensorDigital);
