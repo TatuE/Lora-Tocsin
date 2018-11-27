@@ -9,7 +9,7 @@
 #include <HTTPClient.h>
 
 const char* ssid = "<SSID>"; // Insert the wireless network SSID
-const char* psswd = "<SSID>"; // Insert the wireless network password
+const char* psswd = "<PSSWD>"; // Insert the wireless network password
 const int SensorDigital = 22;
 
 void setup() {

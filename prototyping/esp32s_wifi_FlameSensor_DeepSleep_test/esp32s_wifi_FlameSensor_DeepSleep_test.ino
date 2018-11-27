@@ -3,8 +3,8 @@
 #include <WiFi.h>
 #include <HTTPClient.h>
 
-const char* ssid = "BI66ER 2.4"; // Insert the wireless network SSID
-const char* psswd = "250812TaHaLu!"; // Insert the wireless network password
+const char* ssid = "<SSID>"; // Insert the wireless network SSID
+const char* psswd = "<PSSWD>"; // Insert the wireless network password
 
 const int SensorDigital = 22;
 const int sleepTime=60; // time to sleep in seconds
@@ -14,7 +14,7 @@ int flameCount=0;
 int loopCount=0;
 int sensorResult;
 
-String host = "http://192.168.1.16/"; // insert target host, no need to add port (which is 80/tcp in this case)
+String host = "http://0.0.0.0/"; // insert target host, no need to add port (which is 80/tcp in this case)
 
 void setup() {
   delay(500); // it seems there is a bug that prevents the ESP32 waking from deep sleep.\

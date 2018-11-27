@@ -7,10 +7,10 @@ const int ss = 5;
 const int rst = 32;
 const int dio0 = 33;
 
-const char* ssid = "BI66ER 2.4"; // Insert the wireless network SSID
-const char* psswd = "250812TaHaLu!"; // Insert the wireless network password
+const char* ssid = "<SSID>"; // Insert the wireless network SSID
+const char* psswd = "<PSSWD>!"; // Insert the wireless network password
 
-String host = "http://192.168.1.16/"; // insert target host, no need to add port (which is 80/tcp in this case)
+String host = "http://0.0.0.0/"; // insert target host, no need to add port (which is 80/tcp in this case)
 String validLoRaUid[] ={"LT-A01","LT-B02"}; // define the known transmitter device uid's, this is a checklist.
 void setup() {
   Serial.begin(115200);
