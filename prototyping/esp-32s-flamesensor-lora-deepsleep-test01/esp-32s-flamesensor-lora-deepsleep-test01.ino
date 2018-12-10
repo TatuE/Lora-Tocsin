@@ -57,7 +57,7 @@ void loraSetup(){
     delay(500);
   }
 
-  LoRa.setSyncWord(0xFF);//Define a syncword to be used, the range is 0-0xFF (public network [LoRaWAN] is 0x34). \
+  LoRa.setSyncWord(0x34);//Define a syncword to be used, the range is 0-0xFF (public network [LoRaWAN] is 0x34). \
                            In a point to point connection, the receiver (defined to use the same syncword) will only accept packages send using\
                            this specific syncword.     
   Serial.println("LoRa Initializing OK!");

@@ -10,11 +10,11 @@ const int ss = 5;
 const int rst = 32;
 const int dio0 = 33;
 
-const char* ssid = "<SSID>"; // Insert the wireless network SSID
-const char* psswd = "<PSSWD>"; // Insert the wireless network password
+const char* ssid = "<ssid>"; // Insert the wireless network SSID
+const char* psswd = "<psswd>"; // Insert the wireless network password
 
-String host = "http://0.0.0.0/"; // insert target host, no need to add port (which is 80/tcp in this case)
-String validLoRaUid[] ={"LT-A01","LT-B02"}; // define the known transmitter device uid's, this is a checklist.
+String host = "http://0.0.0.0"; // insert target host, no need to add port (which is 80/tcp in this case)
+String validLoRaUid[] ={"LoraA01","LoraB01","LoraA02","LoraB02"}; // define the known transmitter device uid's, this is a checklist.
 
 void setup() {
   delay(1000);
@@ -66,7 +66,7 @@ void loop() {
           }        
           HTTPClient http;
           Serial.println("Sending message!");
-          http.begin(host+"?loraUid="+loraUid+"&sensorValue="+String(sensorValue)); // prepare the http message.
+          http.begin(host+"/Lora-Tocsin/AddSensorData?loraUid="+loraUid+"&sensorValue="+String(sensorValue)); // prepare the http message.
           http.GET(); // send the http message using GET
           http.end();      
         }else{
@@ -86,7 +86,7 @@ void loraSetup(){
     delay(500);
   }
 
-  LoRa.setSyncWord(0x34);//Define a syncword to be used, the range is 0-0xFF (public network [LoRaWAN] is 0x34). \
+  LoRa.setSyncWord(0xFF);//Define a syncword to be used, the range is 0-0xFF (public network [LoRaWAN] is 0x34). \
                            In a point to point connection, the receiver (defined to use the same syncword) will only accept packages send using\
                            this specific syncword.
   LoRa.setSpreadingFactor(12);

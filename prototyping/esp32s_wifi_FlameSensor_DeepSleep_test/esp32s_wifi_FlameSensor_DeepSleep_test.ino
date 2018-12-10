@@ -3,8 +3,8 @@
 #include <WiFi.h>
 #include <HTTPClient.h>
 
-const char* ssid = "<SSID>"; // Insert the wireless network SSID
-const char* psswd = "<PSSWD>"; // Insert the wireless network password
+const char* ssid = "<ssid>"; // Insert the wireless network SSID
+const char* psswd = "<psswd>"; // Insert the wireless network password
 
 const int SensorDigital = 22;
 const int sleepTime=60; // time to sleep in seconds

@@ -9,11 +9,11 @@ const int rst = 32;
 const int dio0 = 33;
 const int SensorDigital = 22;
 
-const int sleepTime=15; // time to sleep in minutes
+const int sleepTime=1; // time to sleep in minutes
 const int mSConverter = 60000000; // The sleep timer works using micro seconds,\
                                     this converts the sleepTime appropriately.
 
-const String loraUid = "LT-A01"; // define the uid for the transmitter, this must also be included in the receiver module code.
+const String loraUid = "LoraA01"; // define the uid for the transmitter, this must also be included in the receiver module code.
 int flameCount=0;
 int loopCount=0;
 int sensorResult;
@@ -60,7 +60,7 @@ void loraSetup(){
     delay(500);
   }
 
-  LoRa.setSyncWord(0x34);//Define a syncword to be used, the range is 0-0xFF (public network [LoRaWAN] is 0x34). \
+  LoRa.setSyncWord(0xFF);//Define a syncword to be used, the range is 0-0xFF (public network [LoRaWAN] is 0x34). \
                            In a point to point connection, the receiver (defined to use the same syncword) will only accept packages send using\
                            this specific syncword.
   LoRa.setSpreadingFactor(12);

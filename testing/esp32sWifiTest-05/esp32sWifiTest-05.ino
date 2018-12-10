@@ -8,33 +8,31 @@
 #include <WiFi.h>
 #include <HTTPClient.h>
 
-const char* ssid = "<SSID>"; // Insert the wireless network SSID
-const char* psswd = "<SSID>"; // Insert the wireless network password
-const int SensorDigital = 22;
+const char* ssid = "<ssid>"; // Insert the wireless network SSID
+const char* psswd = "<psswd>"; // Insert the wireless network password
+
+String loraUid = "LoraA01";
+int sensorValue = 1;
 
 void setup() {
   Serial.begin(115200);
-  pinMode(SensorDigital, INPUT);
   wifiConnect();
 }
 
 void loop() {
-  String host = "http://192.168.1.16/";
-  int sensorValue = LOW;
 
-  sensorValue = digitalRead(SensorDigital);
-  if(sensorValue==HIGH){
+    if(WiFi.status() != WL_CONNECTED){
+      wifiConnect();
+    }
+  
+    String host = "http://0.0.0.0/";  // host address
     HTTPClient http;
     Serial.println("Sending message!");
-    http.begin(host+"?Fire=1");
+    http.begin(host+"/Lora-Tocsin/AddSensorData?loraUid="+loraUid+"&sensorValue="+String(sensorValue));
+    Serial.println("/Lora-Tocsin/AddSensorData?loraUid="+loraUid+"&sensorValue="+String(sensorValue));
     http.GET();
     http.end();
-    delay(1000);
-  }
-
-  if(WiFi.status() != WL_CONNECTED){
-    wifiConnect();
-  }
+    delay(1000); 
 }
 
 void wifiConnect(){

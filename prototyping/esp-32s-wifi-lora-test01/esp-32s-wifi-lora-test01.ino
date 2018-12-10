@@ -7,12 +7,13 @@ const int ss = 5;
 const int rst = 32;
 const int dio0 = 33;
 
-const char* ssid = "<SSID>"; // Insert the wireless network SSID
-const char* psswd = "<PSSWD>!"; // Insert the wireless network password
+const char* ssid = "<ssid>"; // Insert the wireless network SSID
+const char* psswd = "<psswd"; // Insert the wireless network password
 
 String host = "http://0.0.0.0/"; // insert target host, no need to add port (which is 80/tcp in this case)
 String validLoRaUid[] ={"LT-A01","LT-B02"}; // define the known transmitter device uid's, this is a checklist.
 void setup() {
+  delay(1000);
   Serial.begin(115200);
   delay(1000);
   wifiConnect(); // prepare the wifi connection
@@ -23,7 +24,7 @@ void loop() {
   String loRaData;
   String loraUid;
   int arrayContainsUid=0;
-  int sensorValue;
+  int sensorValue = 2;
   
   int packetSize = LoRa.parsePacket();  //Check if there is a new packet to be received
   if (packetSize) {
@@ -79,7 +80,7 @@ void loraSetup(){
     delay(500);
   }
 
-   LoRa.setSyncWord(0xFF);//Define a syncword to be used, the range is 0-0xFF (public network [LoRaWAN] is 0x34). \
+   LoRa.setSyncWord(0x34);//Define a syncword to be used, the range is 0-0xFF (public network [LoRaWAN] is 0x34). \
                            In a point to point connection, the receiver (defined to use the same syncword) will only accept packages send using\
                            this specific syncword.  
   Serial.println("LoRa Initializing OK!");
